@@ -1,0 +1,45 @@
+<div class="dashboard">
+  <!-- Header -->
+  <header class="dashboard__header">
+    <div class="dashboard__title">
+      <h1>Fixed Income Dashboard</h1>
+      <span class="dashboard__subtitle">Real-Time Bond Price Monitor</span>
+    </div>
+    <div class="dashboard__status">
+      <span class="status-dot" [class.status-dot--live]="isConnected()"></span>
+      <span class="status-text">{{ isConnected() ? 'LIVE' : 'DISCONNECTED' }}</span>
+    </div>
+  </header>
+
+  <!-- Stats bar -->
+  <div class="dashboard__stats">
+    <div class="stat-card">
+      <span class="stat-card__label">Instruments</span>
+      <span class="stat-card__value">{{ bondCount() }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-card__label">Last Update</span>
+      <span class="stat-card__value stat-card__value--small">
+        {{ lastUpdated() ? (lastUpdated() | date : 'HH:mm:ss') : '—' }}
+      </span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-card__label">Feed</span>
+      <span class="stat-card__value">WebSocket</span>
+    </div>
+  </div>
+
+  <!-- ag-Grid -->
+  <div class="dashboard__grid">
+    <ag-grid-angular
+      class="ag-theme-alpine-dark"
+      [rowData]="bonds()"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [getRowId]="getRowId"
+      [animateRows]="true"
+      [enableCellChangeFlash]="true"
+      (gridReady)="onGridReady($event)"
+    />
+  </div>
+</div>

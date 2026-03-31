@@ -1,0 +1,16 @@
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter([
+      {
+        path: '',
+        loadComponent: () =>
+          import('./dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent
+          ),
+      },
+    ]),
+  ],
+};

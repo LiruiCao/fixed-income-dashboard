@@ -1,0 +1,111 @@
+:host {
+  display: block;
+  height: 100vh;
+  background: #0f1117;
+  color: #e5e7eb;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  gap: 16px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f9fafb;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  &__subtitle {
+    font-size: 0.8rem;
+    color: #6b7280;
+    display: block;
+    margin-top: 2px;
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__grid {
+    flex: 1;
+
+    ag-grid-angular {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #6b7280;
+  transition: background 0.3s;
+
+  &--live {
+    background: #16a34a;
+    box-shadow: 0 0 6px #16a34a;
+    animation: pulse 2s infinite;
+  }
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.stat-card {
+  background: #1c2030;
+  border: 1px solid #2d3148;
+  border-radius: 8px;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 0.7rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f9fafb;
+
+    &--small {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

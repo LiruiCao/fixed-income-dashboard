@@ -1,0 +1,76 @@
+{
+  "hash": "9431a190",
+  "configHash": "9d6f9d90",
+  "lockfileHash": "239f5f18",
+  "browserHash": "b43382eb",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "fd577da6",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "c3d7c163",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "377e100a",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "b4ce7fa6",
+      "needsInterop": false
+    },
+    "@ngrx/signals": {
+      "src": "../../../../../node_modules/@ngrx/signals/fesm2022/ngrx-signals.mjs",
+      "file": "@ngrx_signals.js",
+      "fileHash": "9c6f58c9",
+      "needsInterop": false
+    },
+    "ag-grid-angular": {
+      "src": "../../../../../node_modules/ag-grid-angular/fesm2020/ag-grid-angular.mjs",
+      "file": "ag-grid-angular.js",
+      "fileHash": "2f948a0d",
+      "needsInterop": false
+    },
+    "ag-grid-community": {
+      "src": "../../../../../node_modules/ag-grid-community/dist/package/main.esm.mjs",
+      "file": "ag-grid-community.js",
+      "fileHash": "c3ebfd08",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "7544dc10",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-B5LYZCDM": {
+      "file": "chunk-B5LYZCDM.js"
+    },
+    "chunk-SPJ7WXXD": {
+      "file": "chunk-SPJ7WXXD.js"
+    },
+    "chunk-RRSTU2XK": {
+      "file": "chunk-RRSTU2XK.js"
+    },
+    "chunk-TSL3GG4N": {
+      "file": "chunk-TSL3GG4N.js"
+    },
+    "chunk-ZM5PSH5T": {
+      "file": "chunk-ZM5PSH5T.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
