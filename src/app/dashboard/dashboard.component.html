@@ -6,8 +6,13 @@
       <span class="dashboard__subtitle">Real-Time Bond Price Monitor</span>
     </div>
     <div class="dashboard__status">
-      <span class="status-dot" [class.status-dot--live]="isConnected()"></span>
-      <span class="status-text">{{ isConnected() ? 'LIVE' : 'DISCONNECTED' }}</span>
+      <span
+        class="status-dot"
+        [class.status-dot--live]="isConnected()"
+      ></span>
+      <span class="status-text">{{
+        isConnected() ? "LIVE" : "DISCONNECTED"
+      }}</span>
     </div>
   </header>
 
@@ -20,7 +25,7 @@
     <div class="stat-card">
       <span class="stat-card__label">Last Update</span>
       <span class="stat-card__value stat-card__value--small">
-        {{ lastUpdated() ? (lastUpdated() | date : 'HH:mm:ss') : '—' }}
+        {{ lastUpdated() ? (lastUpdated() | date : "HH:mm:ss") : "—" }}
       </span>
     </div>
     <div class="stat-card">
@@ -39,6 +44,7 @@
       [getRowId]="getRowId"
       [animateRows]="true"
       [enableCellChangeFlash]="true"
+      style="width: 100%; height: 100%"
       (gridReady)="onGridReady($event)"
     />
   </div>

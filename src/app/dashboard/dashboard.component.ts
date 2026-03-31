@@ -5,9 +5,9 @@ import {
   inject,
   computed,
   signal,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AgGridModule } from 'ag-grid-angular';
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AgGridModule } from "ag-grid-angular";
 import {
   ColDef,
   GridApi,
@@ -15,21 +15,21 @@ import {
   CellClassParams,
   CellStyle,
   ModuleRegistry,
-} from 'ag-grid-community';
-import { ClientSideRowModelModule } from 'ag-grid-community';
-import { Subscription } from 'rxjs';
+} from "ag-grid-community";
+import { ClientSideRowModelModule } from "ag-grid-community";
+import { Subscription } from "rxjs";
 
-import { BondStore, Bond } from '../bond.store';
-import { WebSocketService } from '../websocket.service';
+import { BondStore, Bond } from "../bond.store";
+import { WebSocketService } from "../websocket.service";
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 @Component({
-  selector: 'app-dashboard',
+  selector: "app-dashboard",
   standalone: true,
   imports: [CommonModule, AgGridModule],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   private bondStore = inject(BondStore);
@@ -49,72 +49,65 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   columnDefs: ColDef<Bond>[] = [
     {
-      field: 'name',
-      headerName: 'Instrument',
-      width: 200,
+      field: "name",
+      headerName: "Instrument",
+      minWidth: 160,
       sortable: true,
       filter: true,
     },
+    { field: "cusip", headerName: "CUSIP", minWidth: 140 },
     {
-      field: 'cusip',
-      headerName: 'CUSIP',
-      width: 160,
-    },
-    {
-      field: 'price',
-      headerName: 'Price',
-      width: 120,
+      field: "price",
+      headerName: "Price",
+      minWidth: 100,
       valueFormatter: (p) => p.value?.toFixed(3),
       cellStyle: (params: CellClassParams<Bond>): CellStyle => {
         if (!params.data) return {};
-        const dir = params.data.direction;
-        if (dir === 'up') return { color: '#16a34a', fontWeight: '600' };
-        if (dir === 'down') return { color: '#dc2626', fontWeight: '600' };
+        if (params.data.direction === "up")
+          return { color: "#16a34a", fontWeight: "600" };
+        if (params.data.direction === "down")
+          return { color: "#dc2626", fontWeight: "600" };
         return {};
       },
       enableCellChangeFlash: true,
     },
     {
-      field: 'yield',
-      headerName: 'Yield %',
-      width: 120,
-      valueFormatter: (p) => p.value?.toFixed(4) + '%',
+      field: "yield",
+      headerName: "Yield %",
+      minWidth: 100,
+      valueFormatter: (p) => p.value?.toFixed(4) + "%",
       enableCellChangeFlash: true,
     },
     {
-      field: 'change',
-      headerName: 'Change',
-      width: 120,
-      valueFormatter: (p) => {
-        const v = p.value;
-        return v > 0 ? `+${v.toFixed(3)}` : v.toFixed(3);
-      },
+      field: "change",
+      headerName: "Change",
+      minWidth: 100,
+      valueFormatter: (p) =>
+        p.value > 0 ? `+${p.value.toFixed(3)}` : p.value.toFixed(3),
       cellStyle: (params: CellClassParams<Bond>): CellStyle => {
         if (!params.data) return {};
-        if (params.data.change > 0) return { color: '#16a34a' };
-        if (params.data.change < 0) return { color: '#dc2626' };
+        if (params.data.change > 0) return { color: "#16a34a" };
+        if (params.data.change < 0) return { color: "#dc2626" };
         return {};
       },
     },
     {
-      field: 'direction',
-      headerName: '▲▼',
-      width: 80,
-      valueFormatter: (p) => {
-        if (p.value === 'up') return '▲';
-        if (p.value === 'down') return '▼';
-        return '—';
-      },
+      field: "direction",
+      headerName: "▲▼",
+      minWidth: 60,
+      valueFormatter: (p) =>
+        p.value === "up" ? "▲" : p.value === "down" ? "▼" : "—",
       cellStyle: (params: CellClassParams<Bond>): CellStyle => {
-        if (params.value === 'up') return { color: '#16a34a' };
-        if (params.value === 'down') return { color: '#dc2626' };
-        return { color: '#6b7280' };
+        if (params.value === "up") return { color: "#16a34a" };
+        if (params.value === "down") return { color: "#dc2626" };
+        return { color: "#6b7280" };
       },
     },
   ];
 
   defaultColDef: ColDef = {
     resizable: true,
+    flex: 1,
   };
 
   ngOnInit(): void {
